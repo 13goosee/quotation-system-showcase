@@ -1,0 +1,14 @@
+{
+  "name": "quotation-system",
+  "version": "1.0.0",
+  "description": "AI-powered quotation system for design studios",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.0.0",
+    "@anthropic-ai/sdk": "^0.39.0",
+    "puppeteer": "^22.0.0"
+  }
+}

@@ -1,0 +1,179 @@
+/* ── Fonts ──────────────────────────────────────────────────────────────── */
+/* 字型由 HTML 產生流程動態注入，或使用相對於 HTML 的路徑 */
+
+/* ── Reset & Base ───────────────────────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DFLiSong', serif; font-weight: 300; font-size: 9pt; color: #000; background: #999; }
+@page { size: A4; margin: 0; }
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: #E8E8E8;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  margin: 10mm auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+@media print {
+  body { background: white; }
+  .page { margin: 0; box-shadow: none; }
+  .page-number-footer { display: none; }
+}
+
+/* ── Part 1: Items ──────────────────────────────────────────────────────── */
+.page-items { padding: 12mm 22mm; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5mm; }
+.logo-area img { height: 16.5mm; mix-blend-mode: darken; }
+.quotation-title { font-size: 13pt; letter-spacing: 0.08em; }
+.rule-thick { border: none; border-top: 1.2pt solid #000; }
+.rule-dash { border: none; border-top: 0.5pt dashed #BBBBBB; }
+
+.project-name { font-weight: 600; font-size: 10.5pt; margin-top: calc(13mm - 22px); }
+
+.quote-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 5mm; }
+.quote-table th, .quote-table td { border-top: 0.5pt solid #BBBBBB; border-bottom: 0.5pt solid #BBBBBB; height: 12mm; }
+.quote-table th { padding: 0 3.5mm; font-weight: 600; text-align: center; }
+.quote-table th.col-name { text-align: left; }
+
+.relative-container { position: relative; width: 100%; height: 100%; display: flex; align-items: center; }
+.cell-padding { padding: 0 3.5mm; width: 100%; }
+
+.col-num { width: 18mm; text-align: center; }
+.col-name { text-align: left; }
+.col-price { width: 32mm; text-align: center; }
+.col-qty { width: 20mm; text-align: center; }
+.col-total { width: 32mm; text-align: center; }
+.quote-table td.col-price, .quote-table td.col-qty, .quote-table td.col-total { font-style: italic; }
+
+.col-num .relative-container,
+.col-price .relative-container,
+.col-qty .relative-container,
+.col-total .relative-container { justify-content: center; }
+
+.quote-table .col-num, .quote-table .col-name { border-right: 0.5pt solid #BBBBBB; }
+/* 簡易版：單價是最後一欄，無右邊框 */
+.quote-table td.col-price { border-right: none; }
+/* 明細版：數量和單價有右邊框，小計無右邊框 */
+.quote-table.has-detail td.col-price { border-right: 0.5pt solid #BBBBBB; }
+.quote-table.has-detail th.col-price { border-right: 0.5pt solid #BBBBBB; }
+.quote-table .col-qty { border-right: 0.5pt solid #BBBBBB; }
+.quote-table td.col-total { border-right: none; }
+
+/* 移除空白填充行的垂直格線 */
+.quote-table td.no-v-line {
+  border-right: none !important;
+}
+
+.italic { font-style: italic; }
+.gray-fill { flex-grow: 1; }
+.total-line { font-weight: 600; font-size: 11pt; margin-top: 9mm; text-align: left; }
+.total-amount { font-style: italic; }
+.total-original { font-style: italic; }
+.total-original { text-decoration: line-through; color: #cc0000; margin-right: 4mm; }
+.total-suffix { margin-left: 4mm; font-style: normal; }
+.page-number-footer { text-align: center; font-size: 8pt; color: #999; padding: 3mm 0; flex-shrink: 0; }
+
+/* ── Part 2: Signature Area - Layout A+B (Compact & Pinned) ──────────────── */
+.page-signature { padding: 0; }
+.scope-section { background: #E8E8E8; padding: 22mm 22mm 5mm; }
+.timeline-section { background: #E8E8E8; padding: 5mm 22mm 5mm; }
+.timeline-section.timeline-first { padding-top: 12mm; }
+.scope-section.scope-continuation { padding-top: 22mm; }
+.timeline-section.timeline-continuation { padding-top: 38mm; }
+.scope-content-area { flex: 1 1 auto; min-height: 0; overflow: hidden; }
+.section-title { font-weight: 600; font-size: 11.5pt; margin-bottom: 3mm; color: #333; }
+
+.scope-body { color: #444; line-height: 1.8; font-size: 9.5pt; letter-spacing: 0.02em; }
+.scope-line { margin-bottom: 1mm; }
+.scope-spacer { height: 5mm; }
+.continue-hint { color: #999; font-size: 9.5pt; margin-top: 3mm; }
+/* blocks 路徑的「下頁續」直接掛在 scope-content-area 下，缺 section 的 22mm 左右留白，補回讓它與內文對齊 */
+.scope-content-area > .continue-hint { padding: 0 22mm; }
+
+/* 智慧標題與清單 */
+.has-title strong { font-weight: 600; color: #000; }
+.has-title { margin-top: 4mm; }
+.list-item { padding-left: 1.5em; text-indent: -1.5em; }
+.scope-indent-1 { padding-left: 5mm; }
+.scope-indent-2 { padding-left: 10mm; }
+.scope-indent-3 { padding-left: 15mm; }
+.scope-indent-1.list-item { padding-left: calc(5mm + 1.5em); }
+.scope-indent-2.list-item { padding-left: calc(10mm + 1.5em); }
+.scope-indent-3.list-item { padding-left: calc(15mm + 1.5em); }
+
+/* Quill 富文字在 PDF 中的樣式 */
+.scope-body p { margin: 0 0 1mm; line-height: 1.8; }
+.scope-body p:empty,
+.scope-body p br:only-child { margin-bottom: 3mm; }
+.scope-body strong { font-weight: 600; color: #000; }
+.scope-body em { font-style: italic; }
+.scope-body ol,
+.scope-body ul { margin: 1mm 0; padding-left: 6mm; }
+.scope-body ol { list-style: decimal outside; }
+.scope-body ul { list-style: disc outside; }
+.scope-body li { margin-bottom: 1mm; line-height: 1.8; padding-left: 1mm; }
+.scope-body li.ql-indent-1 { padding-left: calc(1mm + 6mm); }
+.scope-body li.ql-indent-2 { padding-left: calc(1mm + 12mm); }
+.scope-body li.ql-indent-3 { padding-left: calc(1mm + 18mm); }
+.scope-body li.ql-indent-4 { padding-left: calc(1mm + 24mm); }
+.scope-body p.ql-indent-1 { padding-left: 6mm; }
+.scope-body p.ql-indent-2 { padding-left: 12mm; }
+.scope-body p.ql-indent-3 { padding-left: 18mm; }
+.scope-body p.ql-indent-4 { padding-left: 24mm; }
+
+/* 同一頁上第二個以後的 block section：去掉 top padding 讓它接續 */
+.scope-section-following { padding-top: 5mm !important; }
+
+.signature-bottom { padding: 22mm 22mm 10mm; background: #E8E8E8; flex-shrink: 0; }
+.remarks-body p { line-height: 1.7; font-size: 8.5pt; color: #555; margin-bottom: 0; }
+.indent-text { padding-left: 3.5mm; }
+
+.dash-margin-compact { margin: 3mm 0; }
+
+.studio-row { display: flex; justify-content: space-between; align-items: flex-end; }
+.studio-info p { line-height: 1.6; font-size: 9pt; }
+.studio-name { font-weight: 600; }
+
+.stamp-area { display: flex; gap: 15px; align-items: center; justify-content: flex-end; }
+.sig-img { height: 16mm; mix-blend-mode: darken; }
+.stamp-img { height: 22mm; mix-blend-mode: darken; }
+
+.client-info-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 15mm; }
+.client-info-details { flex: 1 1 auto; min-width: 0; }
+.client-info-details p { line-height: 1.8; font-size: 9pt; }
+.client-signature-area { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; min-width: 0; }
+.client-signature-area:empty { display: none; }
+.client-signature-stamp { text-align: center; padding: 0; }
+.client-signature-stamp .cs-img { max-width: 50mm; max-height: 16mm; display: block; margin: 0 auto 1mm; }
+.client-signature-stamp .cs-typed { font-family: "Brush Script MT", "Snell Roundhand", cursive; font-size: 20pt; line-height: 1; margin-bottom: 1mm; color: #1a1a1a; }
+.client-signature-stamp .cs-name { font-size: 8pt; color: #333; line-height: 1.4; }
+.client-signature-stamp .cs-date { font-size: 7pt; color: #888; line-height: 1.4; }
+.client-signature-stamp .cs-badge { font-size: 7pt; color: #059669; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 1mm; }
+
+.page-signature-receipt { padding: 22mm; font-family: "DFLiSong", serif; color: #1a1a1a; }
+.receipt-title { font-size: 22pt; font-weight: 600; margin-bottom: 4mm; }
+.receipt-subtitle { font-size: 10pt; color: #666; margin-bottom: 12mm; }
+.receipt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm 12mm; margin-bottom: 10mm; }
+.receipt-grid div, .receipt-section { border-top: 0.5pt solid #CFCFCF; padding-top: 3mm; }
+.receipt-grid span, .receipt-section span { display: block; font-size: 8pt; color: #777; margin-bottom: 1.5mm; }
+.receipt-grid strong { display: block; font-size: 10pt; font-weight: 600; word-break: break-word; }
+.receipt-section { margin-bottom: 8mm; }
+.receipt-section code { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 8pt; line-height: 1.5; word-break: break-all; }
+.receipt-section p { margin: 0 0 2mm; font-size: 10pt; line-height: 1.7; }
+.receipt-section small { color: #777; font-size: 8pt; }
+.receipt-signature-box { min-height: 28mm; display: flex; align-items: center; justify-content: center; border: 0.5pt solid #D8D8D8; background: #FAFAFA; }
+.receipt-signature-img { max-width: 70mm; max-height: 24mm; }
+.receipt-signature-typed { font-family: "Brush Script MT", "Snell Roundhand", cursive; font-size: 26pt; }
+/* legacy .client-info-row p 選擇器保留，因為 .client-info-details p 是它的 descendant */
+.client-info-row p { line-height: 1.8; font-size: 9pt; }
+.date-row { display: flex; align-items: baseline; justify-content: space-between; font-size: 10pt; margin-top: 6mm; width: 100%; }
+.d-ch { text-align: center; flex: 0.6; }
+.d-ch:first-child { text-align: left; }
+.d-num { text-align: center; flex: 1.5; }
+.d-year-num { flex: 2; }
+.d-label { text-align: center; flex: 0.8; }

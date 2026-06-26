@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>報價單簽署 — Client Signature</title>
+</head>
+<body>
+    <div class="sign-page">
+        <!-- Client Info -->
+        <div class="sign-form">
+            <label>聯絡電話</label>
+            <input type="tel" placeholder="例：02-1234-5678">
+            <label>聯絡地址</label>
+            <input type="text" placeholder="例：台北市中山區...">
+        </div>
+
+        <!-- Signature Area -->
+        <div class="sign-tabs">
+            <button class="tab active">手寫簽名</button>
+            <button class="tab">打字簽名</button>
+        </div>
+        <div class="sign-canvas">
+            <canvas width="600" height="200"></canvas>
+            <p class="sign-hint">在這裡簽上你的名字</p>
+        </div>
+        <button class="btn-clear">清除</button>
+
+        <!-- Agreement -->
+        <label class="sign-agreement">
+            <input type="checkbox">
+            我同意以電子文件及電子簽章方式簽署本報價單，並確認已閱讀全部內容。
+        </label>
+
+        <p class="sign-checklist">
+            送出前請補齊：公司抬頭、Email、聯絡電話、聯絡地址、電子文件與電子簽章同意、簽名
+        </p>
+
+        <!-- Submit -->
+        <button class="btn-sign" disabled>確認簽署</button>
+        <p class="sign-disclaimer">
+            送出即代表你同意這份報價單的內容。簽署時間、IP 將被記錄作為電子簽章的稽核軌跡。
+        </p>
+    </div>
+</body>
+</html>

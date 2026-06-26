@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>報價單產生器 — AI-Powered Quotation System</title>
+    <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Top Navigation -->
+        <header class="app-nav">
+            <div class="app-nav-left">
+                <button class="nav-back" type="button">
+                    <span class="nav-back-label">我的報價單</span>
+                </button>
+                <span class="nav-divider"></span>
+                <button class="nav-doc-title" type="button">LHS 品牌升級華麗登場專案</button>
+                <span class="nav-chip nav-chip--draft">草稿</span>
+            </div>
+            <div class="app-nav-right">
+                <button class="nav-btn nav-btn--ghost" type="button">
+                    <span>報價日期</span>
+                </button>
+                <button class="nav-btn nav-btn--ghost" type="button">
+                    <span>團隊</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="editor-layout">
+            <!-- Left Panel: Editor -->
+            <section class="editor-panel" id="editor">
+                <!-- AI Entry Point -->
+                <div class="ai-entry-banner">
+                    <span class="ai-entry-icon">←</span>
+                    <div class="ai-entry-text">
+                        <strong>讓 AI 幫你從零報一張</strong>
+                        <span>描述案子，AI 生出整份品項清單和專案流程</span>
+                    </div>
+                    <span class="ai-entry-arrow">→</span>
+                </div>
+
+                <!-- Step 1: Basic Info -->
+                <div class="form-section">
+                    <h3 class="section-title">Step 1. 基本資訊</h3>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>專案名稱</label>
+                            <input type="text" value="LHS 品牌升級華麗登場專案">
+                        </div>
+                        <div class="form-field">
+                            <label>客戶名稱</label>
+                            <input type="text" placeholder="例：林業署窗口 林小姐">
+                            <small>自己認單用，不會出現在報價單上</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Quotation Items -->
+                <div class="form-section">
+                    <h3 class="section-title">Step 2. 報價品項</h3>
+                    <div class="item-row">
+                        <span class="drag-handle">⠿</span>
+                        <span class="item-name">LOGO設計</span>
+                        <span class="item-price">NT $ 65,000</span>
+                        <button class="btn-remove">✕</button>
+                    </div>
+                    <div class="item-row">
+                        <span class="drag-handle">⠿</span>
+                        <span class="item-name">名片設計</span>
+                        <span class="item-price">NT $ 22,000</span>
+                        <button class="btn-remove">✕</button>
+                    </div>
+                    <div class="item-row">
+                        <span class="drag-handle">⠿</span>
+                        <span class="item-name">信封設計</span>
+                        <span class="item-price">NT $ 15,000</span>
+                        <button class="btn-remove">✕</button>
+                    </div>
+                    <div class="item-row">
+                        <span class="drag-handle">⠿</span>
+                        <span class="item-name">制服設計</span>
+                        <span class="item-price">NT $ 25,000</span>
+                        <button class="btn-remove">✕</button>
+                    </div>
+                    <div class="item-row">
+                        <span class="drag-handle">⠿</span>
+                        <span class="item-name">樣本包裝設計</span>
+                        <span class="item-price">NT $ 35,000</span>
+                        <button class="btn-remove">✕</button>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-steps">
+                    <span class="step completed">✓ 專案名稱</span>
+                    <span class="step completed">✓ 品項</span>
+                    <span class="step">○ 流程</span>
+                    <span class="step completed">✓ 報價日期</span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn-primary btn-share">👁 客戶開啟過 3 次</button>
+                    <button class="btn-secondary">產出 PDF 檔案</button>
+                </div>
+            </section>
+
+            <!-- Right Panel: Live PDF Preview -->
+            <section class="preview-panel">
+                <div class="pdf-page">
+                    <div class="pdf-header">
+                        <div class="studio-logo">森 田 達 子</div>
+                        <div class="pdf-title">｛ Quotation ｝</div>
+                    </div>
+                    <h2 class="pdf-project">專案名稱：LHS 品牌升級華麗登場專案</h2>
+                    <table class="pdf-table">
+                        <thead>
+                            <tr><th>項目</th><th>品名</th><th>單價</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>LOGO設計</td><td>NT$ 65,000</td></tr>
+                            <tr><td>2</td><td>名片設計</td><td>NT$ 22,000</td></tr>
+                            <tr><td>3</td><td>信封設計</td><td>NT$ 15,000</td></tr>
+                            <tr><td>4</td><td>制服設計</td><td>NT$ 25,000</td></tr>
+                            <tr><td>5</td><td>樣本包裝設計</td><td>NT$ 35,000</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
